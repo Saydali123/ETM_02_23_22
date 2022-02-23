@@ -1,4 +1,4 @@
-package uz.elmurodov.spring_boot.services;
+package uz.elmurodov.spring_boot.services.base;
 
 import uz.elmurodov.spring_boot.mapper.Mapper;
 import uz.elmurodov.spring_boot.repository.AbstractRepository;

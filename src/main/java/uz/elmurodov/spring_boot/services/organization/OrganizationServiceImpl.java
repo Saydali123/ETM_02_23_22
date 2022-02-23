@@ -14,7 +14,7 @@ import uz.elmurodov.spring_boot.entity.file.Uploads;
 import uz.elmurodov.spring_boot.entity.organization.Organization;
 import uz.elmurodov.spring_boot.mapper.OrganizationMapper;
 import uz.elmurodov.spring_boot.repository.OrganizationRepository;
-import uz.elmurodov.spring_boot.services.AbstractService;
+import uz.elmurodov.spring_boot.services.base.AbstractService;
 import uz.elmurodov.spring_boot.services.file.FileStorageService;
 import uz.elmurodov.spring_boot.utils.BaseUtils;
 import uz.elmurodov.spring_boot.utils.validators.organization.OrganizationValidator;
@@ -27,6 +27,7 @@ public class OrganizationServiceImpl extends AbstractService<OrganizationReposit
         implements OrganizationService {
 
     private final FileStorageService fileStorageService;
+
     @Autowired
     protected OrganizationServiceImpl(OrganizationRepository repository, @Qualifier("organizationMapper") OrganizationMapper mapper, OrganizationValidator validator, BaseUtils baseUtils, FileStorageService fileStorageService) {
         super(repository, mapper, validator, baseUtils);
@@ -35,16 +36,17 @@ public class OrganizationServiceImpl extends AbstractService<OrganizationReposit
 
     @Override
     public Long create(OrganizationCreateDto createDto) {
-        Organization organization = createPath(createDto,createDto.getLogo());
+        Organization organization = createPath(createDto, createDto.getLogo());
         repository.save(organization);
         return organization.getId();
     }
+
     @SneakyThrows
     public Organization createPath(OrganizationCreateDto dto, @NonNull MultipartFile file) {
         Organization organization = mapper.fromCreateDto(dto);
         Uploads uploads = fileStorageService.store(file);
         organization.setLogo(uploads.getPath());
-        organization.setCreateby(1L);
+//        organization.setCreateby(1L);
         return organization;
     }
 

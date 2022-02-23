@@ -21,7 +21,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-public abstract class Auditable implements  Serializable {
+public abstract class Auditable implements  Serializable, BaseEntity {
 
 
     @Id

@@ -14,7 +14,7 @@ import uz.elmurodov.spring_boot.entity.file.Uploads;
 import uz.elmurodov.spring_boot.entity.project.Project;
 import uz.elmurodov.spring_boot.mapper.ProjectMapper;
 import uz.elmurodov.spring_boot.repository.ProjectRepository;
-import uz.elmurodov.spring_boot.services.AbstractService;
+import uz.elmurodov.spring_boot.services.base.AbstractService;
 import uz.elmurodov.spring_boot.services.file.FileStorageService;
 import uz.elmurodov.spring_boot.utils.BaseUtils;
 import uz.elmurodov.spring_boot.utils.validators.project.ProjectValidator;
@@ -43,8 +43,8 @@ public class ProjectServiceImpl extends AbstractService<ProjectRepository, Proje
     public Project createPath(final ProjectCreateDto dto, @NonNull MultipartFile file) {
         Project project = mapper.fromCreateDto(dto);
         Uploads uploads = fileStorageService.store(file);
-        project.setTzPath(uploads.getPath());
-        project.setCreateby(1L);
+//        project.setTzPath(uploads.getPath());
+//        project.setCreatedby(1L);
         return project;
     }
 
@@ -60,7 +60,7 @@ public class ProjectServiceImpl extends AbstractService<ProjectRepository, Proje
 
     @Override
     public List<ProjectDto> getAll(GenericCriteria criteria) {
-         return mapper.toDto(repository.findAll());
+        return mapper.toDto(repository.findAll());
     }
 
     @Override
