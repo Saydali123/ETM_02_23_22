@@ -7,7 +7,6 @@ import uz.elmurodov.spring_boot.entity.Auditable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
-
 @Getter
 @Setter
 @Entity
