@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments.html :: header('Organization delete page')">
+</head>
+<body>
+<header>
+    <section th:include="fragments.html :: navbar"></section>
+</header>
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 offset-3">
+                <p class="h4" th:text="${todo.title}"></p>
+                <p class="h4" th:text="${todo.description}"></p>
+                <!--                <p class="h4" th:text="${todo.completed}"></p>-->
+                <p>Are You Sure</p>
+                <form method="post" th:action="@{/todo/delete/{id}/(id=${todo.id})}">
+                    <button type="submit" class="btn btn-danger">Yes</button>
+                    <a th:href="@{/todo/list/}" class="btn btn-warning">No</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</main>
+<footer>
+    <section th:include="fragments.html :: js"></section>
+</footer>
+</body>
+</html>
