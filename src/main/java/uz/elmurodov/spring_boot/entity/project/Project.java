@@ -2,6 +2,7 @@ package uz.elmurodov.spring_boot.entity.project;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import uz.elmurodov.spring_boot.entity.Auditable;
 import uz.elmurodov.spring_boot.entity.BaseEntity;
@@ -12,13 +13,13 @@ import javax.persistence.*;
 @Entity
 @Table(name = "project", schema = "etm_b4")
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 public class Project extends Auditable implements BaseEntity {
 
     @Column(nullable = false)
     private String name;
-
 
     private String description;
 
@@ -28,11 +29,6 @@ public class Project extends Auditable implements BaseEntity {
 
     @Column(name = "closed")
     private Boolean closed;
-
-
-
-    public Project() {
-    }
 
     public Project(Long id) {
         super(id);
