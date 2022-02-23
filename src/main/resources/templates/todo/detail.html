@@ -1,28 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments.html :: header('Organization Details Page')">
-</head>
+<head th:include="fragment.html :: header('Detail Page')"></head>
+<body class="myb">
+<section th:include="fragment.html :: navbar"></section>
 <body>
-<header>
-    <section th:include="fragments.html :: navbar"></section>
-</header>
 <main>
     <div class="container">
         <div class="row">
             <div class="col-6 offset-3">
-                <p class="h4" th:text="${organization.name}"></p>
-                <p class="h4" th:text="${organization.email}"></p>
-                <p class="h4" th:text="${organization.code}"></p>
+                <p class="h4" th:text="${todo.title}"></p>
+                <p class="h4" th:text="${todo.description}"></p>
+                <!--                <p class="h4" th:text="${todo.com}"></p>-->
                 <p>Are You Sure</p>
-                <form method="get" th:action="@{/organization/list}">
+                <form method="get" th:action="@{/todo/all}">
                     <button type="submit" class="btn btn-warning">Back</button>
                 </form>
             </div>
         </div>
     </div>
 </main>
-<footer>
-    <section th:include="fragments.html :: js"></section>
-</footer>
+<section th:include="fragment.html :: js-files"></section>
+
 </body>
 </html>

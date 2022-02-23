@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments.html :: header('Organization delete page')">
-</head>
-<body>
-<header>
-    <section th:include="fragments.html :: navbar"></section>
-</header>
+<head th:include="fragment.html :: header('Home Page')"></head>
+<body class="myb">
+<section th:include="fragment.html :: navbar"></section>
 <main>
     <div class="container">
         <div class="row">
@@ -23,8 +20,7 @@
     </div>
 
 </main>
-<footer>
-    <section th:include="fragments.html :: js"></section>
-</footer>
+<section th:include="fragment.html :: js-files"></section>
+
 </body>
 </html>

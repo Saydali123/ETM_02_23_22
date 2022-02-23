@@ -26,11 +26,12 @@
                 </td>
                 <td th:if="${todo.completed}">
                     <div class="form-check">
-<!--                        <a th:href="@{/todo/complete/{id}(id=${todo.id})}">-->
-<!--                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>-->
-<!--                        </a>-->
+                        <!--                        <a th:href="@{/todo/complete/{id}(id=${todo.id})}">-->
+                        <!--                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>-->
+                        <!--                        </a>-->
                         <form method="post" th:action="@{/todo/complete/{id}(id=${todo.id})}">
-                            <input class="form-check-input" type="checkbox" role="switch" id="reset-button" name="completed"
+                            <input class="form-check-input" type="checkbox" role="switch" id="reset-button"
+                                   name="completed"
                                    th:checked="${todo.isCompleted()}" onclick="this.form.submit()">
                             <!--                        <label class="form-check-label" for="completed" > Completed ?</label>-->
                         </form>
@@ -38,23 +39,24 @@
                 </td>
                 <td th:unless="${todo.completed}">
                     <div class="form-check">
-<!--                        <a th:href="@{/todo/complete/{id}(id=${todo.id})}">-->
-<!--                            <input class="form-check-input" type="checkbox" id="k">-->
-<!--                        </a>-->
+                        <!--                        <a th:href="@{/todo/complete/{id}(id=${todo.id})}">-->
+                        <!--                            <input class="form-check-input" type="checkbox" id="k">-->
+                        <!--                        </a>-->
                         <form method="post" th:action="@{/todo/complete/{id}(id=${todo.id})}">
-                            <input class="form-check-input" type="checkbox" role="switch" id="completed" name="completed"
+                            <input class="form-check-input" type="checkbox" role="switch" id="completed"
+                                   name="completed"
                                    th:checked="${todo.isCompleted()}" onclick="this.form.submit()">
                             <!--                        <label class="form-check-label" for="completed" > Completed ?</label>-->
                         </form>
                     </div>
                 </td>
 
-                <th class="icons">
-                    <a th:href="@{/todo/detail/{id}(id = ${todo.id})}">👁</a>
+                <td class="icons">
+                    <a th:href="@{/todo/detail/{id}(id=${todo.id})}">👁</a>
                     <a th:href="@{/todo/block/{id}(id = ${todo.id})}">🔐</a>
                     <a th:href="@{/todo/unblock/{id}(id = ${todo.id})}">🔓</a>
                     <a th:href="@{/todo/delete/{id}(id = ${todo.id})}">🗑</a>
-                </th>
+                </td>
             </tr>
             </tbody>
         </table>
