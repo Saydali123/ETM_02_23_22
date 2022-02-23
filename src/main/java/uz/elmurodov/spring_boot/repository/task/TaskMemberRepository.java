@@ -6,4 +6,5 @@ import uz.elmurodov.spring_boot.repository.AbstractRepository;
 
 public interface TaskMemberRepository extends JpaRepository<TaskMember,Long>, AbstractRepository {
 
+
 }
