@@ -3,7 +3,6 @@ package uz.elmurodov.spring_boot.services.organization;
 import lombok.NonNull;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import uz.elmurodov.spring_boot.criteria.GenericCriteria;
@@ -13,7 +12,7 @@ import uz.elmurodov.spring_boot.dto.organization.OrganizationUpdateDto;
 import uz.elmurodov.spring_boot.entity.file.Uploads;
 import uz.elmurodov.spring_boot.entity.organization.Organization;
 import uz.elmurodov.spring_boot.mapper.OrganizationMapper;
-import uz.elmurodov.spring_boot.repository.OrganizationRepository;
+import uz.elmurodov.spring_boot.repository.organization.OrganizationRepository;
 import uz.elmurodov.spring_boot.services.AbstractService;
 import uz.elmurodov.spring_boot.services.file.FileStorageService;
 import uz.elmurodov.spring_boot.utils.BaseUtils;
@@ -28,7 +27,7 @@ public class OrganizationServiceImpl extends AbstractService<OrganizationReposit
 
     private final FileStorageService fileStorageService;
     @Autowired
-    protected OrganizationServiceImpl(OrganizationRepository repository, @Qualifier("organizationMapper") OrganizationMapper mapper, OrganizationValidator validator, BaseUtils baseUtils, FileStorageService fileStorageService) {
+    protected OrganizationServiceImpl(OrganizationRepository repository, OrganizationMapper mapper, OrganizationValidator validator, BaseUtils baseUtils, FileStorageService fileStorageService) {
         super(repository, mapper, validator, baseUtils);
         this.fileStorageService = fileStorageService;
     }
@@ -44,7 +43,7 @@ public class OrganizationServiceImpl extends AbstractService<OrganizationReposit
         Organization organization = mapper.fromCreateDto(dto);
         Uploads uploads = fileStorageService.store(file);
         organization.setLogo(uploads.getPath());
-        organization.setCreateby(1L);
+//        organization.setCreateby(1L);
         return organization;
     }
 

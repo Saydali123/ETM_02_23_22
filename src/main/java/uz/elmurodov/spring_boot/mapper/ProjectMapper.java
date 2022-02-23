@@ -16,11 +16,11 @@ public interface ProjectMapper extends BaseMapper<
         ProjectCreateDto,
         ProjectUpdateDto> {
     @Override
-    @Mapping(target = "tzPath", ignore = true)
+//    @Mapping(target = "tzPath", ignore = true)
     Project fromCreateDto(ProjectCreateDto projectCreateDto);
 
     @Override
-    @Mapping(target = "tzPath", ignore = true)
+//    @Mapping(target = "tzPath", ignore = true)
     Project fromUpdateDto(ProjectUpdateDto projectUpdateDto);
 
 }
