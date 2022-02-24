@@ -16,7 +16,7 @@
 //    private String password;
 //    private UUID code;
 //    private boolean blocked;
-//    private boolean active;
+////    private boolean active;
 //    private Set<GrantedAuthority> authorities;
 //
 //
@@ -26,7 +26,7 @@
 //        this.password = user.getPassword();
 //        this.code = user.getCode();
 //        this.blocked = user.isBlocked();
-//        this.active = user.isActive();
+////        this.active = user.isActive();
 //        processAuthorities(user);
 //    }
 //
@@ -74,6 +74,6 @@
 //
 //    @Override
 //    public boolean isEnabled() {
-//        return this.active;
+//        return true;
 //    }
 //}

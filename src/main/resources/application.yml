@@ -3,11 +3,11 @@ spring:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/spring_boot_projects?currentSchema=b4_todo
     username: postgres
-    password: bunyod
+    password: root123
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     open-in-view: false
   messages:
     always-use-message-format: true

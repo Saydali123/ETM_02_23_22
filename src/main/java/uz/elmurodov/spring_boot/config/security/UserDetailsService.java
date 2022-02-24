@@ -4,7 +4,7 @@
 //import org.springframework.security.core.userdetails.UsernameNotFoundException;
 //import org.springframework.stereotype.Service;
 //import uz.elmurodov.spring_boot.entity.auth.AuthUser;
-//import uz.elmurodov.spring_boot.repository.AuthUserRepository;
+//import uz.elmurodov.spring_boot.repository.auth.AuthUserRepository;
 //
 //@Service
 //public class UserDetailsService implements org.springframework.security.core.userdetails.UserDetailsService {
@@ -14,7 +14,6 @@
 //    public UserDetailsService(AuthUserRepository authUserRepository) {
 //        this.authUserRepository = authUserRepository;
 //    }
-//
 //
 //    @Override
 //    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
