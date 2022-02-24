@@ -35,7 +35,9 @@ public class ProjectServiceImpl extends AbstractService<ProjectRepository, Proje
 
     @Override
     public Long create(ProjectCreateDto createDto) {
-        Project project = createPath(createDto, createDto.getTzPath());
+//        Project project = createPath(createDto, createDto.getTzPath());
+        Project project = mapper.fromCreateDto(createDto);
+
         repository.save(project);
         return project.getId();
     }
