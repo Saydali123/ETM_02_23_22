@@ -5,6 +5,17 @@
   font-family: Rubik;
 }
 
+.project-add{
+  width: 200px;
+  padding: 5px 15px;
+  background-color: green;
+  color: white;
+  font-size: 15px;
+  font-family: "Arial Black", sans-serif;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
 header {
   display: grid;
   grid-template-columns: 300px 1fr;
