@@ -14,55 +14,55 @@ import uz.elmurodov.spring_boot.services.task.TaskService;
  */
 @Controller
 @RequestMapping(value = "/task/*")
-public class TaskController extends AbstractController<TaskService>{
+public class TaskController extends AbstractController<TaskService> {
 
 
     public TaskController(TaskService service) {
         super(service);
     }
 
-    @RequestMapping(value = "details/task")
-    public String detail(Model model, @PathVariable Long id){
+    @RequestMapping(value = "details/{id}")
+    public String detail(Model model, @PathVariable Long id) {
         model.addAttribute("task", service.get(id));
         return "task/detail";
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public String listTask (Model model){
+    public String listTask(Model model) {
         model.addAttribute("tasks", service.getAll(new GenericCriteria()));
         return "task/list";
     }
 
     @RequestMapping(value = "create", method = RequestMethod.GET)
-    public String createPage(){
+    public String createPage() {
         return "task/create";
     }
 
     @RequestMapping(value = "create", method = RequestMethod.POST)
-    public String create(@ModelAttribute TaskCreateDto createDto){
+    public String create(@ModelAttribute TaskCreateDto createDto) {
         service.create(createDto);
         return "redirect:/";
     }
 
-    @RequestMapping(value = "update/{id}",method = RequestMethod.GET)
-    public String updatePage(@PathVariable Long id){
-        return "update/task";
+    @RequestMapping(value = "update/{id}", method = RequestMethod.GET)
+    public String updatePage(@PathVariable Long id) {
+        return "task/update";
     }
 
-    @RequestMapping(value = "update",method = RequestMethod.PATCH)
-    public String update(@ModelAttribute TaskUpdateDto updateDto){
+    @RequestMapping(value = "update", method = RequestMethod.PATCH)
+    public String update(@ModelAttribute TaskUpdateDto updateDto) {
         service.update(updateDto);
         return "redirect:/";
     }
 
     @RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
-    public String deletePage(Model model, @PathVariable Long id){
+    public String deletePage(Model model, @PathVariable Long id) {
         model.addAttribute("task", service.get(id));
         return "delete/task";
     }
 
     @RequestMapping(value = "delete/{id}", method = RequestMethod.PUT)
-    public String delete(@PathVariable Long id){
+    public String delete(@PathVariable Long id) {
         service.delete(id);
         return "redirect:/";
     }

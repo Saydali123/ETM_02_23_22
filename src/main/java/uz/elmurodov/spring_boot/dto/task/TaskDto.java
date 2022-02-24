@@ -13,8 +13,6 @@ import uz.elmurodov.spring_boot.dto.GenericDto;
 @AllArgsConstructor
 public class TaskDto extends GenericDto {
     private String name;
-
     private String status;
-
     private String priority;
 }

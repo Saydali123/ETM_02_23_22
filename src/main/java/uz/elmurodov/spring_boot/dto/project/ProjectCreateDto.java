@@ -1,20 +1,19 @@
 package uz.elmurodov.spring_boot.dto.project;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 import uz.elmurodov.spring_boot.dto.Dto;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
-@Builder
+@Builder(builderMethodName = "childBuilder")
+@AllArgsConstructor
+@NoArgsConstructor
 public class ProjectCreateDto implements Dto {
     private String name;
-    private MultipartFile tzPath;
+    private String description;
+    private LocalDateTime deadline;
 
-    public ProjectCreateDto(String name, MultipartFile tzPath) {
-        this.name = name;
-        this.tzPath = tzPath;
-    }
 }

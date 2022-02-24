@@ -1,29 +1,30 @@
 package uz.elmurodov.spring_boot.dto.project;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import uz.elmurodov.spring_boot.dto.GenericDto;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder(builderMethodName = "childbuilder")
 public class ProjectDto extends GenericDto {
     private String name;
-    private String tzPath;
     private Boolean closed;
-    private Date createdat;
-    private Long createdby;
+    private Long createdBy;
+    private LocalDateTime createdAt;
+    private LocalDateTime deadline;
 
 
     @Builder(builderMethodName = "childBuilder")
-    public ProjectDto(Long id, String name, String tzPath, Boolean closed, Date createdat, Long createdby) {
+    public ProjectDto(Long id, String name, String tzPath, Boolean closed, LocalDateTime createdat, Long createdby) {
         super(id);
         this.name = name;
-        this.tzPath = tzPath;
         this.closed = closed;
-        this.createdat = createdat;
-        this.createdby = createdby;
+        this.createdAt = createdat;
+        this.createdBy = createdby;
     }
 }

@@ -32,6 +32,4 @@ public class Project extends Auditable implements BaseEntity {
     @Column(name = "deadline")
     private LocalDateTime deadline;
 
-
-
 }
