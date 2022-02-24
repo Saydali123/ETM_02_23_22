@@ -20,6 +20,7 @@ import uz.elmurodov.spring_boot.utils.BaseUtils;
 import uz.elmurodov.spring_boot.utils.validators.organization.OrganizationValidator;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrganizationServiceImpl extends AbstractService<OrganizationRepository,
@@ -59,6 +60,10 @@ public class OrganizationServiceImpl extends AbstractService<OrganizationReposit
 
     @Override
     public Void update(OrganizationUpdateDto updateDto) {
+        Optional<Organization> byId = repository.findById(updateDto.getId());
+        if (byId.isPresent()){
+            repository.save(mapper.fromUpdateDto(updateDto));
+        }
         return null;
     }
 
