@@ -53,4 +53,8 @@ public class ColumnServiceIml extends AbstractService<ColumnRepository,
     public Long totalCount(GenericCriteria criteria) {
         return null;
     }
+
+    public void getColumnDtosByProjectId(Long id) {
+
+    }
 }
