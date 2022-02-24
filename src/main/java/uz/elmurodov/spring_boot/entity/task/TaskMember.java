@@ -26,6 +26,5 @@ public class TaskMember  {
     @Column(name = "user_id")
     private Long userId;
 
-    @Column(name = "is_lead")
-    private Boolean isLead;
+
 }

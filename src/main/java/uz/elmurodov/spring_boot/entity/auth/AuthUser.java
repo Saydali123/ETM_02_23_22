@@ -16,7 +16,7 @@ public class AuthUser extends Auditable {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
+    @Column(unique = true, nullable = false)
     private String email;
 
     @Column(nullable = false)
@@ -27,7 +27,8 @@ public class AuthUser extends Auditable {
     @JoinColumn(name = "role_id", nullable = false)
     private AuthRole role;
 
-    private boolean active = true;
+    @Column(name = "organization_id")
+    private Long organizationId;
 
     private boolean blocked;
 
