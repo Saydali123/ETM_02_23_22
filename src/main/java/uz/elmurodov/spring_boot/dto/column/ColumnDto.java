@@ -9,13 +9,16 @@ import java.util.List;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ColumnDto extends GenericDto {
+    private Long id;
     private String name;
-    private List<TaskDto> taskList;
+    private List<TaskDto> listTasks;
 
     @Builder(builderMethodName = "childBuilder")
     public ColumnDto(String name, List<TaskDto> list) {
         this.name = name;
-        this.taskList = list;
+        this.listTasks = list;
     }
 }

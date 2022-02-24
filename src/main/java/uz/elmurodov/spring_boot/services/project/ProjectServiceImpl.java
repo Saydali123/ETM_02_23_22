@@ -3,7 +3,7 @@ package uz.elmurodov.spring_boot.services.project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uz.elmurodov.spring_boot.criteria.GenericCriteria;
-import uz.elmurodov.spring_boot.dto.project.ProjectColumnTaskDto;
+import uz.elmurodov.spring_boot.dto.column.ColumnDto;
 import uz.elmurodov.spring_boot.dto.project.ProjectCreateDto;
 import uz.elmurodov.spring_boot.dto.project.ProjectDto;
 import uz.elmurodov.spring_boot.dto.project.ProjectUpdateDto;
@@ -77,20 +77,20 @@ public class ProjectServiceImpl extends AbstractService<ProjectRepository, Proje
     }
 
     @Override
-    public ProjectColumnTaskDto get(Long id) {
-
-        ProjectColumnTaskDto projectColumnTaskDto = new ProjectColumnTaskDto();
+    public ProjectDto get(Long id) {
+        ProjectDto projectDto = new ProjectDto();
         Project project = repository.findById(id).orElseThrow(() -> {
             throw new RuntimeException("Topilmadi");
         });
-        projectColumnTaskDto.setName(project.getName());
-        projectColumnTaskDto.setDescription(project.getDescription());
-        projectColumnTaskDto.setDeadline(project.getDeadline());
-        projectColumnTaskDto.setId(project.getId());
+        projectDto.setName(project.getName());
+        projectDto.setDescription(project.getDescription());
+        projectDto.setDeadline(project.getDeadline());
+        projectDto.setId(project.getId());
 
-        columnService.getColumnDtosByProjectId(id);
+        List<ColumnDto> columnDtosByProjectId = columnService.getColumnDtosByProjectId(id);
 
-        return mapper.toDto(project);
+        projectDto.setColumnList(columnDtosByProjectId);
+        return projectDto;
     }
 
     @Override

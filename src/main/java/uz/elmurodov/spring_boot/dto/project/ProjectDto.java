@@ -2,9 +2,12 @@ package uz.elmurodov.spring_boot.dto.project;
 
 import lombok.*;
 import uz.elmurodov.spring_boot.dto.GenericDto;
+import uz.elmurodov.spring_boot.dto.auth.AuthUserDto;
+import uz.elmurodov.spring_boot.dto.column.ColumnDto;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -12,19 +15,12 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder(builderMethodName = "childbuilder")
 public class ProjectDto extends GenericDto {
+    private Long id;
     private String name;
-    private Boolean closed;
-    private Long createdBy;
+    private String description;
     private LocalDateTime createdAt;
     private LocalDateTime deadline;
-
-
-    @Builder(builderMethodName = "childBuilder")
-    public ProjectDto(Long id, String name, String tzPath, Boolean closed, LocalDateTime createdat, Long createdby) {
-        super(id);
-        this.name = name;
-        this.closed = closed;
-        this.createdAt = createdat;
-        this.createdBy = createdby;
-    }
+    private List<ColumnDto> columnList;
+    private List<AuthUserDto> memberList;
+    private boolean closed;
 }
