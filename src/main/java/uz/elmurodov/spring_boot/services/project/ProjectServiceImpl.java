@@ -10,6 +10,7 @@ import uz.elmurodov.spring_boot.dto.project.ProjectCreateDto;
 import uz.elmurodov.spring_boot.dto.project.ProjectDto;
 import uz.elmurodov.spring_boot.dto.project.ProjectUpdateDto;
 import uz.elmurodov.spring_boot.entity.file.Uploads;
+import uz.elmurodov.spring_boot.entity.organization.Organization;
 import uz.elmurodov.spring_boot.entity.project.Project;
 import uz.elmurodov.spring_boot.mapper.ProjectMapper;
 import uz.elmurodov.spring_boot.repository.project.ProjectRepository;
@@ -19,6 +20,7 @@ import uz.elmurodov.spring_boot.utils.BaseUtils;
 import uz.elmurodov.spring_boot.utils.validators.project.ProjectValidator;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProjectServiceImpl extends AbstractService<ProjectRepository, ProjectMapper, ProjectValidator>
@@ -49,11 +51,19 @@ public class ProjectServiceImpl extends AbstractService<ProjectRepository, Proje
 
     @Override
     public Void delete(Long id) {
+        Optional<Project> byId = repository.findById(id);
+        if (byId.isPresent()){
+            repository.deleteById(id);
+        }
         return null;
     }
 
     @Override
     public Void update(ProjectUpdateDto updateDto) {
+        Optional<Project> byId = repository.findById(updateDto.getId());
+        if(byId.isPresent()){
+            repository.save(mapper.fromUpdateDto(updateDto));
+        }
         return null;
     }
 
@@ -64,7 +74,10 @@ public class ProjectServiceImpl extends AbstractService<ProjectRepository, Proje
 
     @Override
     public ProjectDto get(Long id) {
-        return mapper.toDto(repository.getById(id));
+        Project project = repository.findById(id).orElseThrow(() -> {
+            throw new RuntimeException("Topilmadi");
+        });
+        return mapper.toDto(project);
     }
 
     @Override
