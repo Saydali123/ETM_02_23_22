@@ -5,9 +5,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import uz.elmurodov.spring_boot.entity.Auditable;
+import uz.elmurodov.spring_boot.entity.task.Task;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -19,4 +24,9 @@ public class PColumn extends Auditable {
 
     @Column(name = "project_id")
     private Long projectId;
+
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Task> listTasks;
+
+
 }

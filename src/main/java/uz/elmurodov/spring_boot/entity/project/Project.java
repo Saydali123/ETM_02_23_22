@@ -9,6 +9,7 @@ import uz.elmurodov.spring_boot.entity.BaseEntity;
 import uz.elmurodov.spring_boot.entity.organization.Organization;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Table(name = "project", schema = "etm_b4")
 @AllArgsConstructor
@@ -30,8 +31,9 @@ public class Project extends Auditable implements BaseEntity {
     @Column(name = "closed")
     private Boolean closed;
 
-    public Project(Long id) {
-        super(id);
-    }
+    @Column(name = "deadline")
+    private LocalDateTime deadline;
+
+
 
 }

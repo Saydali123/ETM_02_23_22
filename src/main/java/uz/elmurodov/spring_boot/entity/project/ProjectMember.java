@@ -19,7 +19,7 @@ public class ProjectMember {
 
 
     @Column(name = "project_id")
-    private Long project;
+    private Long projectId;
 
     @Column(name = "user_id")
     private Long userId;
