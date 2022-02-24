@@ -3,6 +3,7 @@ package uz.elmurodov.spring_boot.services.organization;
 import lombok.NonNull;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import uz.elmurodov.spring_boot.criteria.GenericCriteria;
@@ -26,16 +27,15 @@ public class OrganizationServiceImpl extends AbstractService<OrganizationReposit
         implements OrganizationService {
 
     private final FileStorageService fileStorageService;
-
     @Autowired
-    protected OrganizationServiceImpl(OrganizationRepository repository, OrganizationMapper mapper, OrganizationValidator validator, BaseUtils baseUtils, FileStorageService fileStorageService) {
+    protected OrganizationServiceImpl(OrganizationRepository repository, @Qualifier("organizationMapper") OrganizationMapper mapper, OrganizationValidator validator, BaseUtils baseUtils, FileStorageService fileStorageService) {
         super(repository, mapper, validator, baseUtils);
         this.fileStorageService = fileStorageService;
     }
 
     @Override
     public Long create(OrganizationCreateDto createDto) {
-        Organization organization = createPath(createDto, createDto.getLogo());
+        Organization organization = createPath(createDto,createDto.getLogo());
         repository.save(organization);
         return organization.getId();
     }
