@@ -1,5 +1,6 @@
 package uz.elmurodov.spring_boot.services.task;
 
+import org.springframework.stereotype.Service;
 import uz.elmurodov.spring_boot.criteria.GenericCriteria;
 import uz.elmurodov.spring_boot.dto.task.TaskCreateDto;
 import uz.elmurodov.spring_boot.dto.task.TaskDto;
@@ -15,6 +16,7 @@ import java.util.List;
 /**
  * @author Saydali Murodullayev, Wed 5:54 PM. 2/23/2022
  */
+@Service
 public class TaskIServiceImpl extends AbstractService<TaskRepository, TaskMapper, TaskValidator>
         implements TaskService {
 

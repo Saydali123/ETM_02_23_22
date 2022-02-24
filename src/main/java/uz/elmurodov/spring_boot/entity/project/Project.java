@@ -23,9 +23,8 @@ public class Project extends Auditable implements BaseEntity {
 
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "organization_id")
-    private Organization organization;
+    @Column(name = "organization_id")
+    private Long organization;
 
     @Column(name = "closed")
     private Boolean closed;

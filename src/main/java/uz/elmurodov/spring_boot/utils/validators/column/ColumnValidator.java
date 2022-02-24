@@ -1,13 +1,13 @@
 package uz.elmurodov.spring_boot.utils.validators.column;
 
+import org.springframework.stereotype.Component;
 import uz.elmurodov.spring_boot.dto.column.ColumnCreateDto;
 import uz.elmurodov.spring_boot.dto.column.ColumnUpdateDto;
-import uz.elmurodov.spring_boot.dto.project.ProjectCreateDto;
-import uz.elmurodov.spring_boot.dto.project.ProjectUpdateDto;
 import uz.elmurodov.spring_boot.exceptions.ValidationException;
 import uz.elmurodov.spring_boot.utils.BaseUtils;
 import uz.elmurodov.spring_boot.utils.validators.AbstractValidator;
 
+@Component
 public class ColumnValidator extends AbstractValidator<ColumnCreateDto, ColumnUpdateDto, Long> {
 
     protected ColumnValidator(BaseUtils baseUtils) {

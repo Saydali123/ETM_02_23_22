@@ -9,4 +9,5 @@ import uz.elmurodov.spring_boot.entity.column.PColumn;
 @Component
 @Mapper(componentModel = "spring")
 public interface ColumnMapper extends BaseMapper<PColumn, ColumnDto, ColumnCreateDto, ColumnUpdateDto> {
+
 }

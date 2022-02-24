@@ -28,7 +28,7 @@ public class OrganizationServiceImpl extends AbstractService<OrganizationReposit
 
     private final FileStorageService fileStorageService;
     @Autowired
-    protected OrganizationServiceImpl(OrganizationRepository repository, @Qualifier("organizationMapper") OrganizationMapper mapper, OrganizationValidator validator, BaseUtils baseUtils, FileStorageService fileStorageService) {
+    protected OrganizationServiceImpl(OrganizationRepository repository,OrganizationMapper mapper, OrganizationValidator validator, BaseUtils baseUtils, FileStorageService fileStorageService) {
         super(repository, mapper, validator, baseUtils);
         this.fileStorageService = fileStorageService;
     }

@@ -18,7 +18,6 @@ public class ProjectDto extends GenericDto {
 
 
     @Builder(builderMethodName = "childBuilder")
-
     public ProjectDto(Long id, String name, String tzPath, Boolean closed, Date createdat, Long createdby) {
         super(id);
         this.name = name;
