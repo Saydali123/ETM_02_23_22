@@ -1,8 +1,9 @@
 package uz.elmurodov.spring_boot.utils.validators;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import uz.elmurodov.spring_boot.exceptions.ValidationException;
 import uz.elmurodov.spring_boot.utils.BaseUtils;
-import uz.elmurodov.spring_boot.utils.validators.Validator;
+
 
 public abstract class AbstractValidator<CD, UD, K> implements Validator {
 
@@ -11,6 +12,7 @@ public abstract class AbstractValidator<CD, UD, K> implements Validator {
     protected AbstractValidator(BaseUtils baseUtils) {
         this.baseUtils = baseUtils;
     }
+
 
     public abstract void validateKey(K id) throws ValidationException;
 

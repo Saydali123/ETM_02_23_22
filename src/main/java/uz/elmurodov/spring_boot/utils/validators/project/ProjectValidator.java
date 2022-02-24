@@ -11,7 +11,6 @@ import uz.elmurodov.spring_boot.utils.validators.AbstractValidator;
 public class ProjectValidator extends AbstractValidator<ProjectCreateDto, ProjectUpdateDto, Long> {
 
 
-    @Autowired
     protected ProjectValidator(BaseUtils baseUtils) {
         super(baseUtils);
     }

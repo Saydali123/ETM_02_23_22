@@ -15,7 +15,6 @@ import javax.persistence.Entity;
 @Entity
 public class Task extends Auditable {
 
-
     private String name;
 
     private String status;

@@ -10,12 +10,12 @@ import uz.elmurodov.spring_boot.entity.organization.Organization;
 
 import javax.persistence.*;
 
-@Entity
 @Table(name = "project", schema = "etm_b4")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
+@Entity
 public class Project extends Auditable implements BaseEntity {
 
     @Column(nullable = false)

@@ -4,5 +4,5 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class BaseUtils {
-    private String app_name = "hi";
+    private final String app_name = "hi";
 }
