@@ -11,7 +11,6 @@ import uz.elmurodov.spring_boot.entity.organization.Organization;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Table(name = "project", schema = "etm_b4")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter

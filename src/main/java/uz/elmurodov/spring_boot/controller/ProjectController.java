@@ -32,7 +32,6 @@ public class ProjectController extends AbstractController<ProjectService> {
         return "redirect:/";
     }
 
-
     @RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
     public String deletePage(Model model, @PathVariable(name = "id") Long id) {
         model.addAttribute("project", service.get(id));

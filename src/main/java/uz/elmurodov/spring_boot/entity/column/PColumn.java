@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import uz.elmurodov.spring_boot.entity.Auditable;
+import uz.elmurodov.spring_boot.entity.BaseEntity;
 import uz.elmurodov.spring_boot.entity.task.Task;
 
 import javax.persistence.Column;
@@ -18,7 +19,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class PColumn extends Auditable {
+public class PColumn extends Auditable implements BaseEntity {
 
     private String name;
 

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import uz.elmurodov.spring_boot.entity.Auditable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @AllArgsConstructor
@@ -17,6 +18,7 @@ public class Task extends Auditable {
 
     private String name;
 
+    @Column(columnDefinition = "default 'ACTIVE'")
     private String status;
 
     private String priority;

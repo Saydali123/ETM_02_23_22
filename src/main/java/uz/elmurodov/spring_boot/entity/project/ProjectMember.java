@@ -11,12 +11,11 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "project_member", schema = "etm_b4")
+@Table(name = "project_member", schema = "b4_todo")
 public class ProjectMember {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
 
     @Column(name = "project_id")
     private Long projectId;
