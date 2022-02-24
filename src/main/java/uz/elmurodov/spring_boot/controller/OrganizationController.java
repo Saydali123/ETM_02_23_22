@@ -7,24 +7,25 @@ import org.springframework.web.bind.annotation.*;
 import uz.elmurodov.spring_boot.criteria.GenericCriteria;
 import uz.elmurodov.spring_boot.dto.organization.OrganizationCreateDto;
 import uz.elmurodov.spring_boot.services.organization.OrganizationService;
+import uz.elmurodov.spring_boot.services.organization.OrganizationServiceImpl;
 
 @Controller
 @RequestMapping("/organization/*")
 public class OrganizationController extends AbstractController<OrganizationService> {
 
     @Autowired
-    public OrganizationController(OrganizationService service) {
+    public OrganizationController(OrganizationServiceImpl service) {  //organizationServiceImpl quydim
         super(service);
     }
 
 
-    @RequestMapping(value = "create/", method = RequestMethod.GET)
+    @RequestMapping(value = "create", method = RequestMethod.GET)
     public String createPage() {
         return "organization/create";
     }
 
 
-    @RequestMapping(value = "create/", method = RequestMethod.POST)
+    @RequestMapping(value = "create", method = RequestMethod.POST)
     public String create(@ModelAttribute OrganizationCreateDto dto) {
         service.create(dto);
         return "redirect:/";
@@ -43,18 +44,17 @@ public class OrganizationController extends AbstractController<OrganizationServi
         return "redirect:/";
     }
 
-
-    @RequestMapping(value = "update/{id}/", method = RequestMethod.GET)
+    @RequestMapping(value = "update/{id}", method = RequestMethod.GET)
     public String updatePage(@PathVariable Long id) {
         return "organization/update";
     }
 
-    @RequestMapping(value = "update/", method = RequestMethod.PATCH)
+    @RequestMapping(value = "update", method = RequestMethod.PATCH)
     public String update() {
         return "redirect:/";
     }
 
-    @RequestMapping("detail/{id}/")
+    @RequestMapping("detail/{id}")
     public String detail(@PathVariable Long id) {
         return "organization/detail";
     }

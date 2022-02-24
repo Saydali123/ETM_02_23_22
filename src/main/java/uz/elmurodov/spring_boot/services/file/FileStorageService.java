@@ -23,8 +23,8 @@ import java.util.List;
 @Slf4j
 @Service
 public class FileStorageService {
-    public static final String TZ_UPLOUD_FILE = "/unicorn/uploads/b4/lib/";
-    public static final Path PATH = Paths.get(TZ_UPLOUD_FILE);
+    public static final String TZ_UPLOAD_FILE = "/unicorn/uploads/b4/lib/";
+    public static final Path PATH = Paths.get(TZ_UPLOAD_FILE);
     public static final List<Uploads> UPLOADS = Lists.newArrayList();
 
 
@@ -45,7 +45,7 @@ public class FileStorageService {
         String originalFilename = file.getOriginalFilename();
         String extension = StringUtils.getFilenameExtension(file.getOriginalFilename());
         String generatedName = "%s.%s".formatted(System.currentTimeMillis(), extension);
-        Path rootPath = Paths.get(TZ_UPLOUD_FILE, generatedName);
+        Path rootPath = Paths.get(TZ_UPLOAD_FILE, generatedName);
         Files.copy(file.getInputStream(), rootPath, StandardCopyOption.REPLACE_EXISTING);
         Uploads uploadedFile = Uploads.builder().originalName(originalFilename).generatedName(generatedName).contentType(file.getContentType()).path("/uploads/" + generatedName).size(file.getSize()).build();
         UPLOADS.add(uploadedFile);
@@ -63,7 +63,7 @@ public class FileStorageService {
         val searchingFile = UPLOADS.stream().filter(file -> file.getGeneratedName().equals(fileName)).findFirst().orElseThrow(() -> {
             throw new RuntimeException("File Not Found");
         });
-        FileSystemResource resource = new FileSystemResource(TZ_UPLOUD_FILE + fileName);
+        FileSystemResource resource = new FileSystemResource(TZ_UPLOAD_FILE + fileName);
         searchingFile.setResource(resource);
         return searchingFile;
     }
