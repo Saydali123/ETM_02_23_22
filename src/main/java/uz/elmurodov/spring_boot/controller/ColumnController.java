@@ -13,9 +13,9 @@ import uz.elmurodov.spring_boot.services.column.ColumnService;
 
 @Controller
 @RequestMapping("/column/*")
-public class ColumnConroller extends AbstractController<ColumnService> {
+public class ColumnController extends AbstractController<ColumnService> {
     @Autowired
-    public ColumnConroller(ColumnService service) {
+    public ColumnController(ColumnService service) {
         super(service);
     }
 
@@ -64,6 +64,6 @@ public class ColumnConroller extends AbstractController<ColumnService> {
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String listPage(Model model) {
         model.addAttribute("columns", service.getAll(new GenericCriteria()));
-        return "project/list    ";
+        return "project/list";
     }
 }
