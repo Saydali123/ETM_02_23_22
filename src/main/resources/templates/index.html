@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head ><!--th:include="fragment.html :: header('Home Page')"-->
-    <style>
+    <style th:fragment="home-style">
         * {
             margin: 0;
             padding: 0;
@@ -332,7 +332,7 @@
 <body class="myb">
 <!--<section th:include="fragment.html :: navbar"></section>-->
 
-<header>
+<header th:fragment="home-page">
     <main>
         <div class="menu-bar">
             <i class="fas fa-bars"></i>
