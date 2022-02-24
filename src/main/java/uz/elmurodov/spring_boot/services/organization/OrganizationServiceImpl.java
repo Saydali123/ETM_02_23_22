@@ -28,15 +28,17 @@ public class OrganizationServiceImpl extends AbstractService<OrganizationReposit
         implements OrganizationService {
 
     private final FileStorageService fileStorageService;
+
     @Autowired
-    protected OrganizationServiceImpl(OrganizationRepository repository,OrganizationMapper mapper, OrganizationValidator validator, BaseUtils baseUtils, FileStorageService fileStorageService) {
+    protected OrganizationServiceImpl(OrganizationRepository repository, OrganizationMapper mapper, OrganizationValidator validator, BaseUtils baseUtils, FileStorageService fileStorageService) {
         super(repository, mapper, validator, baseUtils);
         this.fileStorageService = fileStorageService;
     }
 
     @Override
     public Long create(OrganizationCreateDto createDto) {
-        Organization organization = createPath(createDto,createDto.getLogo());
+//        Organization organization = createPath(createDto,createDto.getLogo());
+        Organization organization = mapper.fromCreateDto(createDto);
         repository.save(organization);
         return organization.getId();
     }
