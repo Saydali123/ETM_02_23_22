@@ -1,7 +1,6 @@
 package uz.elmurodov.spring_boot.services.base;
 
 import uz.elmurodov.spring_boot.criteria.GenericCriteria;
-import uz.elmurodov.spring_boot.dto.Dto;
 import uz.elmurodov.spring_boot.dto.GenericDto;
 import uz.elmurodov.spring_boot.entity.BaseEntity;
 
@@ -18,7 +17,7 @@ import java.io.Serializable;
 public interface GenericCrudService<
         E extends BaseEntity,
         D extends GenericDto,
-        CD extends Dto,
+        CD,
         UD extends GenericDto,
         C extends GenericCriteria,
         K extends Serializable> extends GenericService<D, C, K> {

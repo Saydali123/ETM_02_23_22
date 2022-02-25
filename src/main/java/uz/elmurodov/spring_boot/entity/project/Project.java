@@ -5,14 +5,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
-import uz.elmurodov.spring_boot.entity.Auditable;
-import uz.elmurodov.spring_boot.entity.BaseEntity;
 import uz.elmurodov.spring_boot.entity.auth.AuthUser;
 import uz.elmurodov.spring_boot.entity.column.PColumn;
-import uz.elmurodov.spring_boot.entity.organization.Organization;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @AllArgsConstructor

@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uz.elmurodov.spring_boot.criteria.GenericCriteria;
 import uz.elmurodov.spring_boot.dto.column.ColumnCreateDto;
-import uz.elmurodov.spring_boot.dto.column.ColumnDto;
+import uz.elmurodov.spring_boot.dto.column.PColumnDto;
 import uz.elmurodov.spring_boot.dto.column.ColumnUpdateDto;
 import uz.elmurodov.spring_boot.entity.column.PColumn;
 import uz.elmurodov.spring_boot.mapper.ColumnMapper;
@@ -56,12 +56,12 @@ public class ColumnServiceIml extends AbstractService<ColumnRepository,
     }
 
     @Override
-    public List<ColumnDto> getAll(GenericCriteria criteria) {
+    public List<PColumnDto> getAll(GenericCriteria criteria) {
         return mapper.toDto(repository.findAll());
     }
 
     @Override
-    public ColumnDto get(Long id) {
+    public PColumnDto get(Long id) {
         PColumn column = repository.findById(id).orElseThrow(() -> {
             throw new RuntimeException("Topilmadi");
         });
@@ -73,12 +73,12 @@ public class ColumnServiceIml extends AbstractService<ColumnRepository,
         return null;
     }
 
-    public List<ColumnDto> getColumnDtosByProjectId(Long id) {
+    public List<PColumnDto> getColumnDtosByProjectId(Long id) {
         Optional<List<PColumn>> allByProjectIdAndDeletedNot = repository.findAllByProjectIdAndDeletedNot(id);
         List<PColumn> pColumns = allByProjectIdAndDeletedNot.orElse(null);
-        List<ColumnDto> columnDtos = new ArrayList<>();
+        List<PColumnDto> columnDtos = new ArrayList<>();
         for (PColumn pColumn : Objects.requireNonNull(pColumns)) {
-            ColumnDto columnDto = new ColumnDto();
+            PColumnDto columnDto = new PColumnDto();
             columnDto.setName(pColumn.getName());
             columnDto.setId(pColumn.getId());
             columnDto.setListTasks(taskMapper.toDto(pColumn.getListTasks()));

@@ -6,8 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
-import uz.elmurodov.spring_boot.entity.Auditable;
-import uz.elmurodov.spring_boot.entity.BaseEntity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -23,11 +21,7 @@ public class TaskAction  {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     private String cause;
-
-    @Column(name = "task_id")
-    private Long taskId;
 
     @CreatedDate
     @CreationTimestamp

@@ -10,7 +10,7 @@ import lombok.*;
 @Getter
 @Setter
 @Builder
-public class AuthUserDto {
+public class MemberDto {
     private Long id;
     private String username;
     private String picture;

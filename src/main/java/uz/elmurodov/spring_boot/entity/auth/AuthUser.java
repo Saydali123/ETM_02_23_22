@@ -1,13 +1,10 @@
 package uz.elmurodov.spring_boot.entity.auth;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import org.hibernate.annotations.Type;
-import uz.elmurodov.spring_boot.entity.Auditable;
 
 import javax.persistence.*;
-import java.util.UUID;
+
 @Data
 @Entity
 public class AuthUser{

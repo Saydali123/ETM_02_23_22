@@ -2,8 +2,6 @@ package uz.elmurodov.spring_boot.entity.organization;
 
 import lombok.*;
 import org.hibernate.annotations.Type;
-import uz.elmurodov.spring_boot.entity.Auditable;
-import uz.elmurodov.spring_boot.entity.BaseEntity;
 
 import javax.persistence.*;
 

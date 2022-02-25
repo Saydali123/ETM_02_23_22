@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import uz.elmurodov.spring_boot.entity.Auditable;
-import uz.elmurodov.spring_boot.entity.BaseEntity;
 import uz.elmurodov.spring_boot.entity.task.Task;
 
 import javax.persistence.*;

@@ -7,18 +7,13 @@ import uz.elmurodov.spring_boot.dto.task.TaskDto;
 import java.util.List;
 
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ColumnDto extends GenericDto {
+@Builder
+public class PColumnDto extends GenericDto {
     private Long id;
     private String name;
+    private Integer order;
     private List<TaskDto> listTasks;
-
-    @Builder(builderMethodName = "childBuilder")
-    public ColumnDto(String name, List<TaskDto> list) {
-        this.name = name;
-        this.listTasks = list;
-    }
 }

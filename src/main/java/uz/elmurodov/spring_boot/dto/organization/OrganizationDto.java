@@ -16,7 +16,6 @@ public class OrganizationDto extends GenericDto {
 
     @Builder(builderMethodName = "childBuilder")
     public OrganizationDto(Long id, String name, String logo, Long owner) {
-        super(id);
         this.name = name;
         this.logo = logo;
         this.owner = owner;

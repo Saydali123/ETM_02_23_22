@@ -3,7 +3,7 @@ package uz.elmurodov.spring_boot.services.project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uz.elmurodov.spring_boot.criteria.GenericCriteria;
-import uz.elmurodov.spring_boot.dto.column.ColumnDto;
+import uz.elmurodov.spring_boot.dto.column.PColumnDto;
 import uz.elmurodov.spring_boot.dto.project.ProjectCreateDto;
 import uz.elmurodov.spring_boot.dto.project.ProjectDto;
 import uz.elmurodov.spring_boot.dto.project.ProjectUpdateDto;
@@ -87,7 +87,7 @@ public class ProjectServiceImpl extends AbstractService<ProjectRepository, Proje
         projectDto.setDeadline(project.getDeadline());
         projectDto.setId(project.getId());
 
-        List<ColumnDto> columnDtosByProjectId = columnService.getColumnDtosByProjectId(id);
+        List<PColumnDto> columnDtosByProjectId = columnService.getColumnDtosByProjectId(id);
 
         projectDto.setColumnList(columnDtosByProjectId);
         return projectDto;
