@@ -5,8 +5,6 @@ import uz.elmurodov.spring_boot.dto.GenericDto;
 import uz.elmurodov.spring_boot.dto.auth.AuthUserDto;
 import uz.elmurodov.spring_boot.dto.column.ColumnDto;
 
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -15,12 +13,11 @@ import java.util.List;
 @NoArgsConstructor
 @Builder(builderMethodName = "childbuilder")
 public class ProjectDto extends GenericDto {
-    private Long id;
     private String name;
     private String description;
-    private LocalDateTime createdAt;
-    private LocalDateTime deadline;
     private List<ColumnDto> columnList;
     private List<AuthUserDto> memberList;
     private boolean closed;
+
+
 }
