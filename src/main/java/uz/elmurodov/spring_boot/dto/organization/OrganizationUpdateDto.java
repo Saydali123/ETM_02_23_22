@@ -19,7 +19,6 @@ public class OrganizationUpdateDto extends GenericDto {
 
     @Builder(builderMethodName = "childBuilder")
     public OrganizationUpdateDto(Long id, String name, String code, String email) {
-        super(id);
         this.name = name;
         this.code = code;
         this.email = email;

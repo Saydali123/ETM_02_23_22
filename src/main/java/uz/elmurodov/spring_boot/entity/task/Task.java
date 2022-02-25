@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
+import uz.elmurodov.spring_boot.entity.BaseEntity;
 import uz.elmurodov.spring_boot.entity.auth.AuthUser;
 import uz.elmurodov.spring_boot.entity.task.enums.Level;
 
@@ -16,7 +17,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-public class Task {
+public class Task implements BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +33,7 @@ public class Task {
     private Level level;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    private List<AuthUser> members;
+    private List<AuthUser> listMembers;
 
     @Column(name = "is_deleted", columnDefinition = "NUMERIC default 0")
     @Type(type = "org.hibernate.type.NumericBooleanType")

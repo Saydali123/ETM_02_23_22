@@ -17,6 +17,5 @@ public interface TaskService extends GenericCrudService<
         TaskCreateDto,
         TaskUpdateDto,
         GenericCriteria,
-        Long
-        > {
+        Long> {
 }

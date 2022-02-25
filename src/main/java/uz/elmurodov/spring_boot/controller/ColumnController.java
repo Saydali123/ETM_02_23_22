@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import uz.elmurodov.spring_boot.criteria.GenericCriteria;
-import uz.elmurodov.spring_boot.dto.column.ColumnCreateDto;
+import uz.elmurodov.spring_boot.dto.column.PColumnCreateDto;
 import uz.elmurodov.spring_boot.services.column.ColumnService;
 
 @Controller
@@ -26,7 +26,7 @@ public class ColumnController extends AbstractController<ColumnService> {
     }
 
     @RequestMapping(value = "create/", method = RequestMethod.POST)
-    public String create(@ModelAttribute ColumnCreateDto dto) {
+    public String create(@ModelAttribute PColumnCreateDto dto) {
         service.create(dto);
         return "redirect:/";
     }

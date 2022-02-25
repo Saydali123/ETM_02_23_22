@@ -3,9 +3,9 @@ package uz.elmurodov.spring_boot.services.column;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uz.elmurodov.spring_boot.criteria.GenericCriteria;
-import uz.elmurodov.spring_boot.dto.column.ColumnCreateDto;
+import uz.elmurodov.spring_boot.dto.column.PColumnCreateDto;
 import uz.elmurodov.spring_boot.dto.column.PColumnDto;
-import uz.elmurodov.spring_boot.dto.column.ColumnUpdateDto;
+import uz.elmurodov.spring_boot.dto.column.PColumnUpdateDto;
 import uz.elmurodov.spring_boot.entity.column.PColumn;
 import uz.elmurodov.spring_boot.mapper.ColumnMapper;
 import uz.elmurodov.spring_boot.mapper.TaskMapper;
@@ -31,7 +31,7 @@ public class ColumnServiceIml extends AbstractService<ColumnRepository,
     }
 
     @Override
-    public Long create(ColumnCreateDto createDto) {
+    public Long create(PColumnCreateDto createDto) {
         PColumn pColumn = mapper.fromCreateDto(createDto);
         repository.save(pColumn);
         return pColumn.getId();
@@ -47,11 +47,11 @@ public class ColumnServiceIml extends AbstractService<ColumnRepository,
     }
 
     @Override
-    public Void update(ColumnUpdateDto updateDto) {
-        Optional<PColumn> byId = repository.findById(updateDto.getId());
-        if (byId.isPresent()) {
-            repository.save(mapper.fromUpdateDto(updateDto));
-        }
+    public Void update(PColumnUpdateDto updateDto) {
+//        Optional<PColumn> byId = repository.findById(updateDto.getId());
+//        if (byId.isPresent()) {
+//            repository.save(mapper.fromUpdateDto(updateDto));
+//        }
         return null;
     }
 

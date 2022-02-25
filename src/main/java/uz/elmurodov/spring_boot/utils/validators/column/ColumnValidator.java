@@ -1,14 +1,14 @@
 package uz.elmurodov.spring_boot.utils.validators.column;
 
 import org.springframework.stereotype.Component;
-import uz.elmurodov.spring_boot.dto.column.ColumnCreateDto;
-import uz.elmurodov.spring_boot.dto.column.ColumnUpdateDto;
+import uz.elmurodov.spring_boot.dto.column.PColumnCreateDto;
+import uz.elmurodov.spring_boot.dto.column.PColumnUpdateDto;
 import uz.elmurodov.spring_boot.exceptions.ValidationException;
 import uz.elmurodov.spring_boot.utils.BaseUtils;
 import uz.elmurodov.spring_boot.utils.validators.AbstractValidator;
 
 @Component
-public class ColumnValidator extends AbstractValidator<ColumnCreateDto, ColumnUpdateDto, Long> {
+public class ColumnValidator extends AbstractValidator<PColumnCreateDto, PColumnUpdateDto, Long> {
 
     protected ColumnValidator(BaseUtils baseUtils) {
         super(baseUtils);
@@ -20,12 +20,12 @@ public class ColumnValidator extends AbstractValidator<ColumnCreateDto, ColumnUp
     }
 
     @Override
-    public void validOnCreate(ColumnCreateDto columnCreateDto) throws ValidationException {
+    public void validOnCreate(PColumnCreateDto columnCreateDto) throws ValidationException {
 
     }
 
     @Override
-    public void validOnUpdate(ColumnUpdateDto cd) throws ValidationException {
+    public void validOnUpdate(PColumnUpdateDto cd) throws ValidationException {
 
     }
 }

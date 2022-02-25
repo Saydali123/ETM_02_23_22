@@ -5,7 +5,6 @@ import uz.elmurodov.spring_boot.criteria.GenericCriteria;
 import uz.elmurodov.spring_boot.dto.task.TaskCreateDto;
 import uz.elmurodov.spring_boot.dto.task.TaskDto;
 import uz.elmurodov.spring_boot.dto.task.TaskUpdateDto;
-import uz.elmurodov.spring_boot.entity.organization.Organization;
 import uz.elmurodov.spring_boot.entity.task.Task;
 import uz.elmurodov.spring_boot.mapper.TaskMapper;
 import uz.elmurodov.spring_boot.repository.task.TaskRepository;
@@ -47,11 +46,11 @@ public class TaskIServiceImpl extends AbstractService<TaskRepository, TaskMapper
 
     @Override
     public Void update(TaskUpdateDto updateDto) {
-        Optional<Task> byId = repository.findById(updateDto.getId());
-        if (byId.isPresent()){
-            Task task = mapper.fromUpdateDto(updateDto);
-            repository.save(task);
-        }
+//        Optional<Task> byId = repository.findById(updateDto.getId());
+//        if (byId.isPresent()){
+//            Task task = mapper.fromUpdateDto(updateDto);
+//            repository.save(task);
+//        }
         return null;
     }
 

@@ -23,5 +23,5 @@ public class TaskDto extends GenericDto {
     private String description;
     private Integer order;
     private Level level;
-    private List<MemberDto> listMemberDto;
+    private List<MemberDto> listMembers;
 }

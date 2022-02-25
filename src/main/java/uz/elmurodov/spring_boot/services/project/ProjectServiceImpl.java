@@ -3,7 +3,6 @@ package uz.elmurodov.spring_boot.services.project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uz.elmurodov.spring_boot.criteria.GenericCriteria;
-import uz.elmurodov.spring_boot.dto.column.PColumnDto;
 import uz.elmurodov.spring_boot.dto.project.ProjectCreateDto;
 import uz.elmurodov.spring_boot.dto.project.ProjectDto;
 import uz.elmurodov.spring_boot.dto.project.ProjectUpdateDto;
@@ -23,18 +22,12 @@ import java.util.Optional;
 @Service
 public class ProjectServiceImpl extends AbstractService<ProjectRepository, ProjectMapper, ProjectValidator>
         implements ProjectService {
-    private final FileStorageService fileStorageService;
-    private final ColumnServiceIml columnService;
-    private final TaskIServiceImpl taskService;
-//    private final ProjectMemberService projectMemberService;
+    //    private final ProjectMemberService projectMemberService;
 
 
     @Autowired
     protected ProjectServiceImpl(ProjectRepository repository, ProjectMapper mapper, ProjectValidator validator, BaseUtils baseUtils, FileStorageService fileStorageService, ColumnServiceIml columnService, TaskIServiceImpl taskService) {
         super(repository, mapper, validator, baseUtils);
-        this.fileStorageService = fileStorageService;
-        this.columnService = columnService;
-        this.taskService = taskService;
     }
 
     @Override
@@ -64,10 +57,10 @@ public class ProjectServiceImpl extends AbstractService<ProjectRepository, Proje
 
     @Override
     public Void update(ProjectUpdateDto updateDto) {
-        Optional<Project> byId = repository.findById(updateDto.getId());
-        if (byId.isPresent()) {
-            repository.save(mapper.fromUpdateDto(updateDto));
-        }
+//        Optional<Project> byId = repository.findById(updateDto.getId());
+//        if (byId.isPresent()) {
+//            repository.save(mapper.fromUpdateDto(updateDto));
+//        }
         return null;
     }
 
@@ -82,14 +75,14 @@ public class ProjectServiceImpl extends AbstractService<ProjectRepository, Proje
         Project project = repository.findById(id).orElseThrow(() -> {
             throw new RuntimeException("Topilmadi");
         });
-        projectDto.setName(project.getName());
-        projectDto.setDescription(project.getDescription());
-        projectDto.setDeadline(project.getDeadline());
-        projectDto.setId(project.getId());
-
-        List<PColumnDto> columnDtosByProjectId = columnService.getColumnDtosByProjectId(id);
-
-        projectDto.setColumnList(columnDtosByProjectId);
+//        projectDto.setName(project.getName());
+//        projectDto.setDescription(project.getDescription());
+//        projectDto.setDeadline(project.getDeadline());
+//        projectDto.setId(project.getId());
+//
+//        List<PColumnDto> columnDtosByProjectId = columnService.getColumnDtosByProjectId(id);
+//
+//        projectDto.setColumnList(columnDtosByProjectId);
         return projectDto;
     }
 

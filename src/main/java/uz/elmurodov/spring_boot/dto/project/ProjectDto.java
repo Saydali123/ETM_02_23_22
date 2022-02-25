@@ -15,9 +15,10 @@ public class ProjectDto extends GenericDto {
     private Long id;
     private String name;
     private String description;
-    private List<PColumnDto> listColumns;
+    private Long organizationId;
     private List<MemberDto> listMembers;
-    private boolean blocked;
+    private List<PColumnDto> listColumns;
+    private boolean closed;
 
 
 }

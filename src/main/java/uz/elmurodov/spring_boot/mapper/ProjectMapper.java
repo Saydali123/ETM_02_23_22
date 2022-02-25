@@ -8,6 +8,8 @@ import uz.elmurodov.spring_boot.dto.project.ProjectDto;
 import uz.elmurodov.spring_boot.dto.project.ProjectUpdateDto;
 import uz.elmurodov.spring_boot.entity.project.Project;
 
+import java.util.List;
+
 @Component
 @Mapper(componentModel = "spring")
 public interface ProjectMapper extends BaseMapper<
@@ -16,11 +18,13 @@ public interface ProjectMapper extends BaseMapper<
         ProjectCreateDto,
         ProjectUpdateDto> {
     @Override
-//    @Mapping(target = "tzPath", ignore = true)
-    Project fromCreateDto(ProjectCreateDto projectCreateDto);
+    ProjectDto toDto(Project project);
 
     @Override
-//    @Mapping(target = "tzPath", ignore = true)
-    Project fromUpdateDto(ProjectUpdateDto projectUpdateDto);
+    List<ProjectDto> toDto(List<Project> e);
+
+    @Override
+    Project fromCreateDto(ProjectCreateDto projectCreateDto);
+
 
 }

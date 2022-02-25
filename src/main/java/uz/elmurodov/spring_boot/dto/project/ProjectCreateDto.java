@@ -12,6 +12,4 @@ import java.time.LocalDateTime;
 public class ProjectCreateDto {
     private String name;
     private String description;
-    private LocalDateTime deadline;
-
 }

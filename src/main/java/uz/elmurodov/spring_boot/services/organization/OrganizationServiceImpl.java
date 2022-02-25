@@ -60,10 +60,10 @@ public class OrganizationServiceImpl extends AbstractService<OrganizationReposit
 
     @Override
     public Void update(OrganizationUpdateDto updateDto) {
-        Optional<Organization> byId = repository.findById(updateDto.getId());
-        if (byId.isPresent()){
-            repository.save(mapper.fromUpdateDto(updateDto));
-        }
+//        Optional<Organization> byId = repository.findById(updateDto.getId());
+//        if (byId.isPresent()){
+//            repository.save(mapper.fromUpdateDto(updateDto));
+//        }
         return null;
     }
 

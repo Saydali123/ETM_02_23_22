@@ -2,6 +2,7 @@ package uz.elmurodov.spring_boot.entity.organization;
 
 import lombok.*;
 import org.hibernate.annotations.Type;
+import uz.elmurodov.spring_boot.entity.BaseEntity;
 
 import javax.persistence.*;
 
@@ -9,7 +10,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Organization {
+public class Organization implements BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

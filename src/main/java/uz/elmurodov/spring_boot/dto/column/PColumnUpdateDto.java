@@ -6,9 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import uz.elmurodov.spring_boot.dto.GenericDto;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-public class ColumnUpdateDto extends GenericDto {
+
+public class PColumnUpdateDto extends GenericDto {
 }

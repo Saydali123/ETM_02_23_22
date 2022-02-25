@@ -6,6 +6,6 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ColumnCreateDto {
+public class PColumnCreateDto {
     private String name;
 }
