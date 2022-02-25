@@ -8,10 +8,7 @@ import uz.elmurodov.spring_boot.entity.Auditable;
 import uz.elmurodov.spring_boot.entity.BaseEntity;
 import uz.elmurodov.spring_boot.entity.task.Task;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Getter
@@ -19,15 +16,17 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class PColumn extends Auditable implements BaseEntity {
+public class PColumn {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique = true, nullable = false)
+    protected Long id;
 
     private String name;
-
-    @Column(name = "project_id")
-    private Long projectId;
 
     @OneToMany(fetch = FetchType.EAGER)
     private List<Task> listTasks;
 
-
+    private Integer order;
 }

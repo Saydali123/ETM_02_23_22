@@ -1,26 +1,26 @@
 package uz.elmurodov.spring_boot.entity.auth;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 import uz.elmurodov.spring_boot.entity.Auditable;
 
 import javax.persistence.*;
 import java.util.UUID;
-@Getter
-@Setter
+@Data
 @Entity
-public class AuthUser extends Auditable {
-    @Column(unique = true, nullable = false)
-    private String username;
+public class AuthUser{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Long id;
 
     @Column(nullable = false)
     private String password;
 
     @Column(unique = true, nullable = false)
     private String email;
-
-    @Column(nullable = false)
-    private UUID code;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "role_id", nullable = false)
@@ -29,7 +29,13 @@ public class AuthUser extends Auditable {
     @Column(name = "organization_id")
     private Long organizationId;
 
+    @Column(name = "is_blocked", columnDefinition = "NUMERIC default 0")
+    @Type(type = "org.hibernate.type.NumericBooleanType")
     private boolean blocked;
 
     private String picture;
+
+    @Column(name = "is_deleted", columnDefinition = "NUMERIC default 0")
+    @Type(type = "org.hibernate.type.NumericBooleanType")
+    private boolean deleted;
 }

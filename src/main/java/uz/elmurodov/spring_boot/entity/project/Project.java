@@ -4,19 +4,27 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 import uz.elmurodov.spring_boot.entity.Auditable;
 import uz.elmurodov.spring_boot.entity.BaseEntity;
+import uz.elmurodov.spring_boot.entity.auth.AuthUser;
+import uz.elmurodov.spring_boot.entity.column.PColumn;
 import uz.elmurodov.spring_boot.entity.organization.Organization;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
-public class Project extends Auditable implements BaseEntity {
+public class Project {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Long id;
 
     @Column(nullable = false)
     private String name;
@@ -26,12 +34,18 @@ public class Project extends Auditable implements BaseEntity {
     @Column(name = "organization_id")
     private Long organization;
 
-    @Column(name = "closed")
+    @Column(name = "closed", columnDefinition = "NUMERIC default 0")
+    @Type(type = "org.hibernate.type.NumericBooleanType")
     private Boolean closed;
 
-    @Column(name = "deadline")
-    private LocalDateTime deadline;
+    @Column(name = "is_deleted", columnDefinition = "NUMERIC default 0")
+    @Type(type = "org.hibernate.type.NumericBooleanType")
+    private boolean deleted;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<AuthUser> members;
 
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<PColumn> columns;
 
 }

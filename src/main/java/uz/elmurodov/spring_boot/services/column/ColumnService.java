@@ -10,7 +10,6 @@ import uz.elmurodov.spring_boot.services.base.GenericCrudService;
 
 @Service
 public interface ColumnService extends GenericCrudService<
-        PColumn,
         ColumnDto,
         ColumnCreateDto,
         ColumnUpdateDto,
