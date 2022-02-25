@@ -7,22 +7,27 @@ import uz.elmurodov.spring_boot.dto.column.ColumnCreateDto;
 import uz.elmurodov.spring_boot.dto.column.ColumnDto;
 import uz.elmurodov.spring_boot.dto.column.ColumnUpdateDto;
 import uz.elmurodov.spring_boot.entity.column.PColumn;
-import uz.elmurodov.spring_boot.entity.organization.Organization;
 import uz.elmurodov.spring_boot.mapper.ColumnMapper;
+import uz.elmurodov.spring_boot.mapper.TaskMapper;
 import uz.elmurodov.spring_boot.repository.column.ColumnRepository;
 import uz.elmurodov.spring_boot.services.base.AbstractService;
 import uz.elmurodov.spring_boot.utils.BaseUtils;
 import uz.elmurodov.spring_boot.utils.validators.column.ColumnValidator;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
 public class ColumnServiceIml extends AbstractService<ColumnRepository,
         ColumnMapper, ColumnValidator> implements ColumnService {
-@Autowired
-    protected ColumnServiceIml(ColumnRepository repository, ColumnMapper mapper, ColumnValidator validator, BaseUtils baseUtils) {
+    final TaskMapper taskMapper;
+
+    @Autowired
+    protected ColumnServiceIml(ColumnRepository repository, ColumnMapper mapper, ColumnValidator validator, BaseUtils baseUtils, TaskMapper taskMapper) {
         super(repository, mapper, validator, baseUtils);
+        this.taskMapper = taskMapper;
     }
 
     @Override
@@ -35,7 +40,7 @@ public class ColumnServiceIml extends AbstractService<ColumnRepository,
     @Override
     public Void delete(Long id) {
         Optional<PColumn> byId = repository.findById(id);
-        if(byId.isPresent()){
+        if (byId.isPresent()) {
             repository.deleteById(id);
         }
         return null;
@@ -44,7 +49,7 @@ public class ColumnServiceIml extends AbstractService<ColumnRepository,
     @Override
     public Void update(ColumnUpdateDto updateDto) {
         Optional<PColumn> byId = repository.findById(updateDto.getId());
-        if (byId.isPresent()){
+        if (byId.isPresent()) {
             repository.save(mapper.fromUpdateDto(updateDto));
         }
         return null;
@@ -66,5 +71,19 @@ public class ColumnServiceIml extends AbstractService<ColumnRepository,
     @Override
     public Long totalCount(GenericCriteria criteria) {
         return null;
+    }
+
+    public List<ColumnDto> getColumnDtosByProjectId(Long id) {
+        Optional<List<PColumn>> allByProjectIdAndDeletedNot = repository.findAllByProjectIdAndDeletedNot(id);
+        List<PColumn> pColumns = allByProjectIdAndDeletedNot.orElse(null);
+        List<ColumnDto> columnDtos = new ArrayList<>();
+        for (PColumn pColumn : Objects.requireNonNull(pColumns)) {
+            ColumnDto columnDto = new ColumnDto();
+            columnDto.setName(pColumn.getName());
+            columnDto.setId(pColumn.getId());
+            columnDto.setListTasks(taskMapper.toDto(pColumn.getListTasks()));
+            columnDtos.add(columnDto);
+        }
+        return columnDtos;
     }
 }
