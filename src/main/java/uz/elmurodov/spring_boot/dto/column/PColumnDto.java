@@ -15,5 +15,4 @@ public class PColumnDto extends GenericDto {
     private Long id;
     private String name;
     private Integer order;
-    private List<TaskDto> listTasks;
 }

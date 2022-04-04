@@ -9,11 +9,6 @@ import org.yaml.snakeyaml.DumperOptions;
 @Setter
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
 public class OrganizationCreateDto {
-    private String name;
-    private String logo;
-    private String email;
-    private Long ownerId;
 
 }

@@ -48,10 +48,7 @@ public class ColumnServiceIml extends AbstractService<ColumnRepository,
 
     @Override
     public Void update(PColumnUpdateDto updateDto) {
-//        Optional<PColumn> byId = repository.findById(updateDto.getId());
-//        if (byId.isPresent()) {
-//            repository.save(mapper.fromUpdateDto(updateDto));
-//        }
+//
         return null;
     }
 
@@ -73,17 +70,5 @@ public class ColumnServiceIml extends AbstractService<ColumnRepository,
         return null;
     }
 
-    public List<PColumnDto> getColumnDtosByProjectId(Long id) {
-        Optional<List<PColumn>> allByProjectIdAndDeletedNot = repository.findAllByProjectIdAndDeletedNot(id);
-        List<PColumn> pColumns = allByProjectIdAndDeletedNot.orElse(null);
-        List<PColumnDto> columnDtos = new ArrayList<>();
-        for (PColumn pColumn : Objects.requireNonNull(pColumns)) {
-            PColumnDto columnDto = new PColumnDto();
-            columnDto.setName(pColumn.getName());
-            columnDto.setId(pColumn.getId());
-            columnDto.setListTasks(taskMapper.toDto(pColumn.getListTasks()));
-            columnDtos.add(columnDto);
-        }
-        return columnDtos;
-    }
+
 }

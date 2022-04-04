@@ -1,31 +1,26 @@
 package uz.elmurodov.spring_boot.entity.column;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import uz.elmurodov.spring_boot.entity.BaseEntity;
-import uz.elmurodov.spring_boot.entity.task.Task;
+import uz.elmurodov.spring_boot.entity.project.Project;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 public class PColumn implements BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true, nullable = false)
     protected Long id;
 
     private String name;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    private List<Task> listTasks;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Project project;
 
-    private Integer order;
+
+    private Integer columnOrder;
 }

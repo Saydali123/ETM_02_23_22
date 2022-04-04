@@ -12,5 +12,4 @@ import java.util.Optional;
 @Repository
 public interface ColumnRepository extends JpaRepository<PColumn, Long>, AbstractRepository {
 
-    Optional<List<PColumn>> findAllByProjectIdAndDeletedNot(Long id);
 }
