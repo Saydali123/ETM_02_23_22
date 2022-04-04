@@ -1,13 +1,13 @@
 package uz.elmurodov.spring_boot.dto.column;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import uz.elmurodov.spring_boot.dto.GenericDto;
-import uz.elmurodov.spring_boot.dto.task.TaskDto;
-
-import java.util.List;
 
 
-@Data
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
